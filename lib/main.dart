@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'model/tourism_place.dart';
 
 void main() {
   runApp(const MainApp());
@@ -23,46 +24,64 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Wisata Bandung'),
-        backgroundColor: Colors.cyan,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
-        ],
       ),
-      body: Card(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Image.asset('images/Farmhouse-Lembang.jpg'),
-            ),
-            const Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'Farm House Lembang',
-                      style: TextStyle(fontSize: 16),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          final TourismPlace place = tourismPlaceList[index];
+          return InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DetailScreen();
+              }));
+            },
+            child: Card(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Image.asset(place.imageAsset),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            place.name,
+                            style: const TextStyle(fontSize: 16.0),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(place.location),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 10),
-                    Text('Lembang, Bandung'),
-                  ],
-                ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
+            ),
+          );
+        },
+        itemCount: tourismPlaceList.length,
       ),
     );
+  }
+}
+
+class DetailScreen extends StatefulWidget {
+  const DetailScreen({super.key});
+
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
