@@ -15,7 +15,6 @@ class MainApp extends StatelessWidget {
   }
 }
 
-
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
@@ -23,7 +22,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  const Text('Wisata Bandung'),
+        title: const Text('Wisata Bandung'),
         backgroundColor: Colors.cyan,
         leading: IconButton(
           icon: const Icon(Icons.menu),
@@ -38,7 +37,27 @@ class MainScreen extends StatelessWidget {
       ),
       body: Card(
         child: Row(
-          
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset('images/Farmhouse-Lembang.jpg'),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Farm House Lembang',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 10
+                  ),
+                  Text('Lembang, Bandung'),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
