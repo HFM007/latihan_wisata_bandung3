@@ -39,24 +39,27 @@ class MainScreen extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset('images/Farmhouse-Lembang.jpg'),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Farm House Lembang',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(
-                    height: 10
-                  ),
-                  Text('Lembang, Bandung'),
-                ],
-              ),
+            Expanded(
+              flex: 1,
+              child: Image.asset('images/Farmhouse-Lembang.jpg'),
             ),
+            const Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Farm House Lembang',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(height: 10),
+                    Text('Lembang, Bandung'),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
